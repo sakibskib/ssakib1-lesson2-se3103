@@ -33,7 +33,8 @@ public class TriangleEvenListener implements ActionListener, MouseListener{
             window.pack();
             window.revalidate();
         } else if (source== panel.getClearButton()){
-
+            panel.getCanvas().getShapes().clear();
+            panel.getCanvas().repaint();
         } else if (source == panel.getRedButton()){
             color= Color.red;
 
