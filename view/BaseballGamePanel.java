@@ -10,8 +10,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+
+import controller.BaseballKeyListener;
+import model.BaseballGame;
 
 public class BaseballGamePanel {
+
+    public enum GameState{
+        READY, PLAYING, GAMEOVER;   
+    }
+
     private JFrame window;
     private BaseballCanvas canvas;
     private JTextField gameKeyField = new JTextField();
@@ -19,6 +28,9 @@ public class BaseballGamePanel {
     private JButton[] digitButtons;
     private JButton playButton= new JButton("Play Ball~~");
     private JButton exiButton= new JButton("Exit");
+    private GameState gameState = GameState.READY;
+
+    private BaseballGame baseball;
 
     public BaseballGamePanel(JFrame window){
         this.window=window;
@@ -42,16 +54,55 @@ public class BaseballGamePanel {
         JPanel southPanel = new JPanel();
         southPanel.setLayout(new GridLayout(4,3));
 
+
+        BaseballKeyListener keyListerner = new BaseballKeyListener(this);
+
         digitButtons = new JButton[10];
         for (int i=0;i<10;i++){
             digitButtons[i]= new JButton(""+i);
             southPanel.add(digitButtons[i]);
+            digitButtons[i].addActionListener(keyListerner);
 
         }
+        playButton.addActionListener(keyListerner);
+        exiButton.addActionListener(keyListerner);
         southPanel.add(playButton);
         southPanel.add(exiButton);
         cp.add(BorderLayout.SOUTH, southPanel);
+        for(var b : digitButtons ){
+            b.setEnabled(false);
+        }
 
     }
-    
+    public BaseballGame getbBaseballGame(){
+        return baseball;
+    }
+    public JFrame getWindow(){
+        return window;
+    }
+    public BaseballCanvas getCanvas(){
+        return canvas;
+    }
+    public JTextField getGameKeyField(){
+        return gameKeyField;        
+    }
+    public JTextField getGuessField(){
+        return guessField;  
+    }
+    public JButton[] getDigitButtons(){
+        return digitButtons;
+    }
+
+    public  JButton getPlayButton(){
+        return playButton;  
+    }
+    public JButton getExitButton(){
+        return exiButton;
+    }
+    public GameState getGameState(){
+        return gameState;   
+    }
+    public void setGameState(GameState state){
+        this.gameState= state;
+    }
 }
