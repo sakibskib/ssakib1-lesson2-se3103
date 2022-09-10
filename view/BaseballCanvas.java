@@ -37,6 +37,12 @@ public class BaseballCanvas extends JPanel{
             g2.setFont(new Font("Courier New",Font.BOLD,30));
             g2.drawString("Click <Play> to State  ", 70, 150);
         } else {
+
+            if (state == BaseballGamePanel.GameState.GAMEOVER){
+                g2.setColor(Color.red);
+                g2.setFont(new Font("Courier", Font.BOLD, 30));
+                g2.drawString("Game Over", 150, 160);
+            }
             g2.setColor(Color.yellow);
             g2.setFont(new Font("Courier New", Font.BOLD, 14));
             //drawing balls
