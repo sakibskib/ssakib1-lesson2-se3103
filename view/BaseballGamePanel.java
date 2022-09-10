@@ -38,6 +38,20 @@ public class BaseballGamePanel {
 
         canvas = new BaseballCanvas(this);
         cp.add(BorderLayout.CENTER, canvas );
+
+        JPanel southPanel = new JPanel();
+        southPanel.setLayout(new GridLayout(4,3));
+
+        digitButtons = new JButton[10];
+        for (int i=0;i<10;i++){
+            digitButtons[i]= new JButton(""+i);
+            southPanel.add(digitButtons[i]);
+
+        }
+        southPanel.add(playButton);
+        southPanel.add(exiButton);
+        cp.add(BorderLayout.SOUTH, southPanel);
+
     }
     
 }
