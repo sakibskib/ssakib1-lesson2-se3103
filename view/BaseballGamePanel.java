@@ -42,7 +42,7 @@ public class BaseballGamePanel {
         northPanel.setLayout(new GridLayout(2,2));
         northPanel.add(new JLabel("Secret Game Key: "));
         northPanel.add(gameKeyField);
-        northPanel.add(new JLabel("You Guess: "));
+        northPanel.add(new JLabel("Your Guess: "));
         northPanel.add(guessField);
         gameKeyField.setEditable(false);
         guessField.setEditable(false);
