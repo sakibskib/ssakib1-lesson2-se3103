@@ -48,7 +48,8 @@ public class BaseballCanvas extends JPanel{
                 g2.drawOval(i*140+100, 80 , 50 , 50);
 
             }
-        }
+        
+        
             //draw strikes
             g2.drawString("Strikes: ", 20, 200);
             for (int i=0;i<3;i++){
@@ -57,7 +58,7 @@ public class BaseballCanvas extends JPanel{
                 else
                 g2.drawOval(i*140+100, 180 , 50 , 50);
             }
-        
+        }
         
     }
     public void setBallStrikeCount(int balls, int strikes){
